@@ -1,3 +1,5 @@
+import { parse, v4 as uuidv4 } from 'uuid'
+
 import styles from './Project.module.css'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
@@ -6,6 +8,7 @@ import Loading from '../layout/Loading'
 import Container from '../layout/Container'
 import ProjectForm from '../project/ProjectForm'
 import Message from '../layout/Message'
+import ServiceForm from '../service/ServiceForm'
 
 function Project() { // Cria nova uma nova página para edição do projeto
     const { id } = useParams() // "Pega" o id que está vindo pela URL
@@ -60,6 +63,44 @@ function Project() { // Cria nova uma nova página para edição do projeto
             .catch(err => console.log(err))
     }
 
+    function createService(project) { //Cria o serviço
+        setMessage('') // Evita o bug de atualizar o serviço mais de 1 vez seguida
+
+        const lastService = project.services[project.services.length - 1]
+
+        lastService.id = uuidv4()
+
+        const lastServiceCost = lastService.cost
+
+        const newCost = parseFloat(project.cost) + parseFloat(lastServiceCost)
+
+        //Validação do valor máximo
+        if (newCost > parseFloat(project.budget)) {
+            setMessage('Orçamento ultrapassado, verifique o valor do serviço!')
+            setType('error')
+            project.services.pop()
+            return false
+        }
+
+        // Adicionar o custo do serviço no custo total 
+        project.cost = newCost
+
+        // Update do project
+        fetch(`http://localhost:5000/projects/${project.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(project)
+        })
+            .then((resp) => resp.json())
+            .then((data) => {
+                // Exibir os serviços
+            })
+            .catch(err => console.log(err))
+
+    }
+
     function toggleProjectForm() { // Irá mostrar as info do projeto
         setShowProjectForm(!showProjectForm) //Inverte -- se tiver true fica false e vice-versa
     }
@@ -102,16 +143,20 @@ function Project() { // Cria nova uma nova página para edição do projeto
                             )}
                         </div>
                         <div className={styles.service_form_container}>
-                            <h2>Adicione um serviços:</h2>
+                            <h2>Adicione um serviço:</h2>
                             <button className={styles.btn} onClick={toggleServiceForm}>
                                 {!showServiceForm ? 'Adicionar serviço' : 'Fechar'}
                             </button>
                             <div className={styles.project_info}>
-                                {showServiceForm && <div>Formulário do serviço</div>}
+                                {showServiceForm && <ServiceForm
+                                    handleSubmit={createService}
+                                    btnText='Adicionar serviço'
+                                    projectData={project}
+                                />}
                             </div>
                         </div>
                         <h2>Serviços</h2>
-                        <Container customClass = "start" >
+                        <Container customClass="start" >
                             <p>Itens de serviço</p>
                         </Container>
                     </Container>

@@ -7,8 +7,15 @@
         "id": "3",
         "name": "Design"
       },
-      "cost": 0,
-      "services": [],
+      "cost": 111,
+      "services": [
+        {
+          "name": "Gabriel Carvalho",
+          "cost": "111",
+          "description": "dasda",
+          "id": "d1515c88-63d8-4af6-ae43-591f72da53b9"
+        }
+      ],
       "id": 1
     }
   ],
