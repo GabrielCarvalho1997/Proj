@@ -5,7 +5,7 @@ import ProjectForm from '../project/ProjectForm'
 
 function NewProject() {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate() //Usado para redirecionar para outra página
 
     function createPost(project) {
 
@@ -24,7 +24,7 @@ function NewProject() {
             .then((data) => {
                 console.log(data)
                 //redirect
-                navigate('/projects', { message: 'Projeto criado com sucesso! ' })
+                navigate('/projects', { state: { message: 'Projeto criado com sucesso!' } })
             })
             .catch(err => console.log(err))
 
