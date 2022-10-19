@@ -18,9 +18,7 @@ function Message({ type, msg }) { //Configura a mensagem com base no seu tipo e 
             setVisible(false)
         }, 3000)
         
-        return
-
-        // return () => clearTimeout(timer) //Talvez essa função não precise ser executada
+        return () => clearTimeout(timer) 
 
     }, [msg])
 
