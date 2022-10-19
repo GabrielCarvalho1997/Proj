@@ -1,11 +1,11 @@
 {
   "projects": [
     {
-      "name": "aaa",
-      "budget": "111",
+      "name": "Vem rebolando",
+      "budget": "10000",
       "category": {
-        "id": "1",
-        "name": "Infra"
+        "id": "3",
+        "name": "Design"
       },
       "cost": 0,
       "services": [],
