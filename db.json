@@ -1,21 +1,14 @@
 {
   "projects": [
     {
-      "name": "Vem rebolando",
-      "budget": "7000",
+      "name": "ProjetoTeste",
+      "budget": "3000",
       "category": {
         "id": "3",
         "name": "Design"
       },
-      "cost": 111,
-      "services": [
-        {
-          "name": "Gabriel Carvalho",
-          "cost": "111",
-          "description": "dasda",
-          "id": "d1515c88-63d8-4af6-ae43-591f72da53b9"
-        }
-      ],
+      "cost": 0,
+      "services": [],
       "id": 1
     }
   ],

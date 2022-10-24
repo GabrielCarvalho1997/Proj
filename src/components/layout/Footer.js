@@ -1,7 +1,7 @@
 import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa'
 import styles from './Footer.module.css'
 
-
+//Cria o rodapé da página
 function Footer() {
     return (<footer className={styles.footer}>
         <ul className={styles.social_list}>

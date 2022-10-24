@@ -5,10 +5,13 @@ import Select from '../form/Select'
 import SubmitButton from '../form/SubmitButton'
 import styles from './ProjectForm.module.css'
 
+
+//Formulário de criação de um novo projeto
 function ProjectForm({ handleSubmit, btnText, projectData }) {
     const [categories, setCategories] = useState([])
     const [project, setProject] = useState(projectData || {})
 
+    //Faz uma requisição, "pegando" os dados de categoria da API
     useEffect(() => {
         fetch('http://localhost:5000/categories', {
             method: 'GET',
@@ -17,7 +20,7 @@ function ProjectForm({ handleSubmit, btnText, projectData }) {
             },
         })
             .then((resp) => resp.json())
-            .then((data) => {
+            .then((data) => { 
                 setCategories(data)
             })
             .catch(err => console.log(err))

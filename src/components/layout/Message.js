@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 
 import styles from './Message.module.css'
 
-function Message({ type, msg }) { //Configura a mensagem com base no seu tipo e na seu conteúdo
+//Configura a mensagem com base no seu tipo e na seu conteúdo
+function Message({ type, msg }) {
 
     const [visible, setVisible] = useState(false)
 
@@ -16,9 +17,9 @@ function Message({ type, msg }) { //Configura a mensagem com base no seu tipo e 
 
         const timer = setTimeout(() => {
             setVisible(false)
-        }, 3000)
-        
-        return () => clearTimeout(timer) 
+        }, 2000)
+
+        return () => clearTimeout(timer)
 
     }, [msg])
 

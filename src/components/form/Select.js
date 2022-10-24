@@ -1,5 +1,6 @@
 import styles from './Select.module.css'
 
+//Um modelo de select para ser usado em qualquer parte da aplicação
 function Select({ text, name, options, handleOnChange, value }) {
     return (
         <div className={styles.form_control}>

@@ -3,6 +3,8 @@ import Container from './Container'
 import styles from './Navbar.module.css'
 import logo from '../../img/proj_logo.png'
 
+
+//Cria a barra de navegação da página
 function Navbar() {
     return (
         <nav className={styles.navbar}>

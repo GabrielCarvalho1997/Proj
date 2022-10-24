@@ -5,7 +5,8 @@ import SubmitButton from '../form/SubmitButton'
 
 import styles from '../project/ProjectForm.module.css'
 
-function ServiceForm({handleSubmit, btnText, projectData}) {
+//Cria o formulário de serviço e adiciona esse serviço no projeto
+function ServiceForm({ handleSubmit, btnText, projectData }) {
 
     const [service, setService] = useState({})
 
@@ -16,7 +17,7 @@ function ServiceForm({handleSubmit, btnText, projectData}) {
     }
 
     function handleChange(e) {
-        setService({...service, [e.target.name]: e.target.value})
+        setService({ ...service, [e.target.name]: e.target.value })
     }
 
     return (

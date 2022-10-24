@@ -3,6 +3,8 @@ import styles from './ProjectCard.module.css'
 
 import { BsPencil, BsFillTrashFill } from 'react-icons/bs'
 
+
+//Cria o card do projeto com as funcionalidades de apagar e editar
 function ProjectCard({id, name, budget, category, handleRemove}) {
 
     const remove = (e) => {

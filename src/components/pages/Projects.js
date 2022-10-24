@@ -9,6 +9,8 @@ import ProjectCard from "../project/ProjectCard"
 
 import styles from './Projects.module.css'
 
+
+//Cria a página de projetos da aplicação
 function Projects() {
 
     const [projects, setProjects] = useState([])

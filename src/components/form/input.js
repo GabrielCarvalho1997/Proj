@@ -1,5 +1,7 @@
 import styles from './Input.module.css'
 
+
+//Um modelo de input para ser usado em qualquer parte da aplicação
 function Input({ type, text, name, placeholder, handleOnChange, value }) {
     return (
         <div className={styles.form_control}>

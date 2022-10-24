@@ -1,25 +1,27 @@
 import { parse, v4 as uuidv4 } from 'uuid'
 
-import styles from './Project.module.css'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+
+import styles from './Project.module.css'
 
 import Loading from '../layout/Loading'
 import Container from '../layout/Container'
 import ProjectForm from '../project/ProjectForm'
 import Message from '../layout/Message'
 import ServiceForm from '../service/ServiceForm'
+import ServiceCard from '../service/ServiceCard'
 
 function Project() { // Cria nova uma nova página para edição do projeto
-    const { id } = useParams() // "Pega" o id que está vindo pela URL
-
+    let { id } = useParams() // "Pega" o id que está vindo pela URL
     const [project, setProject] = useState([])
     const [showProjectForm, setShowProjectForm] = useState(false)
     const [showServiceForm, setShowServiceForm] = useState(false)
-    const [message, setMessage] = useState()
-    const [type, setType] = useState()
+    const [services, setServices] = useState([])
+    const [message, setMessage] = useState('')
+    const [type, setType] = useState('sucess')
 
-    useEffect(() => {
+    useEffect(() => { //Pega os dados da API e coloca no project no useState
         fetch(`http://localhost:5000/projects/${id}`, {
             method: 'GET',
             headers: {
@@ -29,6 +31,7 @@ function Project() { // Cria nova uma nova página para edição do projeto
             .then((resp) => resp.json())
             .then((data) => {
                 setProject(data)
+                setServices(data.services)
             })
             .catch(err => console.log(err))
     }, [id])
@@ -47,15 +50,14 @@ function Project() { // Cria nova uma nova página para edição do projeto
         fetch(`http://localhost:5000/projects/${project.id}`, {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(project),
         })
             .then((resp) => resp.json())
             .then((data) => {
-
                 setProject(data)
-                setShowProjectForm(false)
+                setShowProjectForm(!showProjectForm)
                 setMessage('Projeto atualizado com sucesso!')
                 setType('success')
 
@@ -63,7 +65,8 @@ function Project() { // Cria nova uma nova página para edição do projeto
             .catch(err => console.log(err))
     }
 
-    function createService(project) { //Cria o serviço
+    //Cria o serviço
+    function createService(project) {
         setMessage('') // Evita o bug de atualizar o serviço mais de 1 vez seguida
 
         const lastService = project.services[project.services.length - 1]
@@ -95,10 +98,41 @@ function Project() { // Cria nova uma nova página para edição do projeto
         })
             .then((resp) => resp.json())
             .then((data) => {
-                // Exibir os serviços
+                setServices(data.services)
+                setShowServiceForm(!showServiceForm)
+                setMessage('Serviço adicionado!')
+                setType('success')
             })
             .catch(err => console.log(err))
+    }
 
+    //Remove o serviço do projeto juntamente com seu custo e atualiza no banco de dados
+    function removeService(id, cost) {
+
+        const servicesUpdated = project.services.filter(
+            (service) => service.id !== id,
+        )
+
+        const projectUpdated = project
+
+        projectUpdated.services = servicesUpdated
+        projectUpdated.cost = parseFloat(projectUpdated.cost) - parseFloat(cost)
+
+        fetch(`http://localhost:5000/projects/${projectUpdated.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(projectUpdated),
+        })
+            .then((resp) => resp.json())
+            .then((data) => {
+                setProject(projectUpdated)
+                setServices(servicesUpdated)
+                setMessage('Serviço removido com sucesso!')
+                setType('success')
+            })
+            .catch(err => console.log(err))
     }
 
     function toggleProjectForm() { // Irá mostrar as info do projeto
@@ -148,16 +182,30 @@ function Project() { // Cria nova uma nova página para edição do projeto
                                 {!showServiceForm ? 'Adicionar serviço' : 'Fechar'}
                             </button>
                             <div className={styles.project_info}>
-                                {showServiceForm && <ServiceForm
-                                    handleSubmit={createService}
-                                    btnText='Adicionar serviço'
-                                    projectData={project}
-                                />}
+                                {showServiceForm && (
+                                    <ServiceForm
+                                        handleSubmit={createService}
+                                        btnText='Adicionar serviço'
+                                        projectData={project}
+                                    />
+                                )}
                             </div>
                         </div>
                         <h2>Serviços</h2>
                         <Container customClass="start" >
-                            <p>Itens de serviço</p>
+                            {services.length > 0 &&
+                                services.map((service) => (
+                                    <ServiceCard
+                                        id={service.id}
+                                        name={service.name}
+                                        cost={service.cost}
+                                        description={service.description}
+                                        key={service.id}
+                                        handleRemove={removeService}
+                                    />
+                                ))
+                            }
+                            {services.length === 0 && <p>Não há serviços cadastrados.</p>}
                         </Container>
                     </Container>
                 </div>

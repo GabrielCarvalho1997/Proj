@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import styles from './NewProject.module.css'
 import ProjectForm from '../project/ProjectForm'
 
+
+//Página de criação de um novo projeto
 function NewProject() {
 
     const navigate = useNavigate() //Usado para redirecionar para outra página
@@ -22,7 +24,7 @@ function NewProject() {
         })
             .then((resp) => resp.json())
             .then((data) => {
-                console.log(data)
+                // console.log(data)
                 //redirect
                 navigate('/projects', { state: { message: 'Projeto criado com sucesso!' } })
             })
