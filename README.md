@@ -10,11 +10,28 @@
 
 Inicie os comandos individualmente em cada terminal:
 
-<p> ---Usado para iniciar o JSON Server, responsável para simular um banco de dados no backend--- </p>
-<p>npm run backend</p>
+## 🎉 Instalação
 
-<p> ---Usado para iniciar a aplicação em ReactJs--- </p>
-<p>npm start</p>
+```sh
+npm install
+```
+Instalar todos os pacotes necessários
+
+## 🍸 Iniciar backend
+
+```sh
+npm run backend
+```
+Iniciar o JSON Server, responsável para simular um banco de dados no backend
+
+## 🔥 Iniciar
+
+```sh
+npm start
+```
+iniciar a aplicação em ReactJs
+
+#
 
 ### Json Server
 <p> Foi criado duas rotas para a API backend:</p>
