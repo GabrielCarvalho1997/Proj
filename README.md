@@ -14,7 +14,7 @@ Inicie os comandos individualmente em cada terminal:
 <p>npm run backend</p>
 
 <p> ---Usado para iniciar a aplicação em ReactJs--- </p>
-__npm start__
+<p>npm start</p>
 
 ### Json Server
 <p> Foi criado duas rotas para a API backend:</p>
