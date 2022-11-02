@@ -15,21 +15,21 @@ Inicie os comandos individualmente em cada terminal:
 ```sh
 npm install
 ```
-Instalar todos os pacotes necessários
+Instalar todos os pacotes necessários.
 
 ## 🍸 Iniciar backend
 
 ```sh
 npm run backend
 ```
-Iniciar o JSON Server, responsável para simular um banco de dados no backend
+Iniciar o JSON Server, responsável em simular um banco de dados no backend.
 
 ## 🔥 Iniciar
 
 ```sh
 npm start
 ```
-iniciar a aplicação em ReactJs
+Iniciar a aplicação em ReactJs.
 
 #
 
