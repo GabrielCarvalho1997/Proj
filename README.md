@@ -36,5 +36,8 @@ Iniciar a aplicação em ReactJs.
 ### Json Server
 <p> Foi criado duas rotas para a API backend:</p>
 
-<p>http://localhost:5000/projects -- Local onde é armazenado os projetos criados -- </p>
-<p>http://localhost:5000/categories -- Local onde é armazenado as categorias de projetos que podem ser criados -- </p>
+-- Local onde é armazenado os projetos criados -- 
+<a> http://localhost:5000/projects</a>
+
+-- Local onde é armazenado as categorias de projetos que podem ser criados -- 
+<a> http://localhost:5000/categories</a>
