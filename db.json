@@ -1,5 +1,42 @@
 {
-  "projects": [],
+  "projects": [
+    {
+      "name": "ProjetoTeste",
+      "budget": "10000",
+      "category": {
+        "id": "2",
+        "name": "Desenvolvimento"
+      },
+      "cost": 1000,
+      "services": [
+        {
+          "name": "fazer alguma coisa",
+          "cost": "1000",
+          "description": "asdasdasdas",
+          "id": "17d2372a-a083-492a-926a-73c66396a6f4"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "name": "ProjetoTeste",
+      "budget": "10000",
+      "category": {
+        "id": "2",
+        "name": "Desenvolvimento"
+      },
+      "cost": 1000,
+      "services": [
+        {
+          "name": "asda",
+          "cost": "1000",
+          "description": "asdas",
+          "id": "ae690873-17d0-4b8d-a73e-8aa94afdd4e6"
+        }
+      ],
+      "id": 2
+    }
+  ],
   "categories": [
     {
       "id": 1,
