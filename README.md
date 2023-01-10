@@ -1,4 +1,7 @@
-## Projeto de um Gerenciador de Projetos
+<h1 align="center">Projeto de um Gerenciador de Projetos</h1>
+<p align="center">Link de acesso => https://projgc.netlify.app/</p>
+
+##
 
 - Usou-se Json Server para simular um API pro back-end atraves do comando:
        "scripts": {  "backend": "json-server --watch db.json --port 5000", }
