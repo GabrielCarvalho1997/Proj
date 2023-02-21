@@ -7,13 +7,19 @@
         "id": "2",
         "name": "Desenvolvimento"
       },
-      "cost": 1000,
+      "cost": 1123,
       "services": [
         {
           "name": "fazer alguma coisa",
           "cost": "1000",
           "description": "asdasdasdas",
           "id": "17d2372a-a083-492a-926a-73c66396a6f4"
+        },
+        {
+          "name": "ansdina",
+          "cost": "123",
+          "description": "Testando",
+          "id": "1e6f3d1c-d5cf-4062-af88-1609da2f7e01"
         }
       ],
       "id": 1
